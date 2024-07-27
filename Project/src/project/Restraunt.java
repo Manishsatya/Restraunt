@@ -20,6 +20,10 @@ public class Restraunt {
 	public String getType() {
 		return type;
 	}
+	@Override
+	public String toString() {
+		return "Restraunt [rid=" + rid + ", name=" + name + ", type=" + type + "]";
+	}
 	
 	
 }

@@ -40,7 +40,7 @@ public class Food {
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
-	
+	@Override
 	public String toString() {
 		return "Item"+ foodName + "-" + (isAvailable?"Available":"Not-Available");
 	}

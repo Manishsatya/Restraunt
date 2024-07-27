@@ -11,8 +11,8 @@ public class PlaceOrder {
 		 
 	 }
 	 
-	 public void addOrders(Food ord) {
-	        Ord.add(ord);
+	 public void addRestraunt(Restraunt res) {
+	        Res.add(res);
 	    }
 	 
 	 public List<Restraunt> searchRestraunts(String type){
@@ -38,11 +38,24 @@ public class PlaceOrder {
 	 public boolean placeOrder(int rid,String foodName, int quantity) {
 		 for(Food ord:Ord) {
 			 
-			 if(ord.getFoodName() == foodName && ord.isAvailable() && ord.getQuantity()> 0) {
+			 if(ord.getFoodName().equals(foodName) && ord.isAvailable() && ord.getQuantity()> 0) {
+				 Ord.add(new Food(rid,foodName,quantity));
 				 return true;
 		         	 
 			 }
 		 }
 		 return false;
+	 }
+	 
+	 public void displayRestraunts() {
+		 for(Restraunt res:Res) {
+			 System.out.println(res);
+		 }
+	 }
+	 
+	 public void displayFood() {
+		 for(Food ord:Ord) {
+			 System.out.println(ord);
+		 }
 	 }
 }
