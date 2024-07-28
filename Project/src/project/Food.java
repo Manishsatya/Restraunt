@@ -5,16 +5,17 @@ public class Food {
 	private int rid;
 	private String foodName;
 	private int quantity;
+	private double price;
 	private boolean isAvailable;
-	
 	private static int count=1;
 	
-	public Food(int rid,String foodName, int quantity) {
+	public Food(int rid,String foodName, int quantity, double price) {
 		super();
 		this.oid = count++;
 		this.rid = rid;
 		this.foodName = foodName;
 		this.quantity = quantity;
+		this.price = price;
 		this.isAvailable = true;
 	}
 
@@ -33,6 +34,15 @@ public class Food {
 	public int getQuantity() {
 		return quantity;
 	}
+	
+	public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+	
+	public double getPrice() {
+		return price;
+	}
+
 	public boolean isAvailable() {
 		return isAvailable;
 	}
@@ -42,7 +52,7 @@ public class Food {
 	}
 	@Override
 	public String toString() {
-		return "Item"+ foodName + "-" + (isAvailable?"Available":"Not-Available");
+		return "Item:-"+ foodName + "-" + (isAvailable?"Available":"Not-Available");
 	}
 	
 

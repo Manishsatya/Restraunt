@@ -15,6 +15,14 @@ public class PlaceOrder {
 	        Res.add(res);
 	    }
 	 
+	 public void addToMenu(Food food) {
+		 for(Restraunt res : Res) {
+			 if(res.getRid() == food.getRid()) {
+				 res.addFood(food);
+				 return;
+			 }
+		 }
+	 }
 	 public List<Restraunt> searchRestraunts(String type){
 		 List<Restraunt> availableRestraunts = new ArrayList<>();
 		 for(Restraunt res:Res) {
@@ -24,34 +32,61 @@ public class PlaceOrder {
 		 }
 		 return availableRestraunts;
 	 }
-
-	 public List<Food> getItems(String foodName){
-		 List<Food> items = new ArrayList<>();
-		 for(Food ord:Ord) {
-			 if(ord.getFoodName().equalsIgnoreCase(foodName)) {
-				 items.add(ord);
-			 }
-		 }
-		 return items;
-	 }
 	 
-	 public boolean placeOrder(int rid,String foodName, int quantity) {
-		 for(Food ord:Ord) {
-			 
-			 if(ord.getFoodName().equals(foodName) && ord.isAvailable() && ord.getQuantity()> 0) {
-				 Ord.add(new Food(rid,foodName,quantity));
-				 return true;
-		         	 
+	 public boolean addToCart(int rid, String foodName, int quantity) {
+		 for(Restraunt res : Res) {
+			 if(res.getRid() == rid) {
+				 for(Food food : res.getMenu()) {
+					 if(food.getFoodName().equalsIgnoreCase(foodName) && food.isAvailable() && food.getQuantity() >= quantity) {
+						 food.setQuantity(food.getQuantity() - quantity);
+						 Ord.add(new Food(rid,foodName,quantity, food.getPrice()*quantity));
+						 return true;
+					 }
+				 }
 			 }
 		 }
 		 return false;
 	 }
+
+
+	 public void placeOrder() {
+	        if (Ord.isEmpty()) {
+	            System.out.println("Cart is empty. Please add items to the cart before placing an order.");
+	        } else {
+	            System.out.println("Order placed successfully!");
+	            Ord.clear();
+	        }
+	    }
+	 
+	 public double getTotalPrice() {
+	        double total = 0;
+	        for (Food food : Ord) {
+	            total += food.getPrice();
+	        }
+	        return total;
+	    }
+
+	    public void displayCart() {
+	        for (Food food : Ord) {
+	            System.out.println(food);
+	        }
+	    }
 	 
 	 public void displayRestraunts() {
 		 for(Restraunt res:Res) {
 			 System.out.println(res);
 		 }
 	 }
+	 
+	 public void displayMenu(String type) {
+	        List<Restraunt> selectedRestraunts = searchRestraunts(type);
+	        for (Restraunt res : selectedRestraunts) {
+	            System.out.println(res);
+	            for (Food food : res.getMenu()) {
+	                System.out.println(food);
+	            }
+	        }
+	    }
 	 
 	 public void displayFood() {
 		 for(Food ord:Ord) {
