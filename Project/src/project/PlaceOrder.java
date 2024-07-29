@@ -54,7 +54,10 @@ public class PlaceOrder {
 	            System.out.println("Cart is empty. Please add items to the cart before placing an order.");
 	        } else {
 	            System.out.println("Order placed successfully!");
-	            Ord.clear();
+	            for (Food food : Ord) {
+		            System.out.println(food);
+	            }
+	            
 	        }
 	    }
 	 

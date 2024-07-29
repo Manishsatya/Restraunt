@@ -83,6 +83,10 @@ public class FoodOrderingSystem {
                 
 			case 5:
                 Rt.placeOrder();
+                System.out.println("Price: " + Rt.getTotalPrice());
+                System.out.println("CGST: " + Rt.getTotalPrice()*18/100);
+                System.out.println("SGST: " + Rt.getTotalPrice()*18/100);
+                System.out.println("Total Price: " + (Rt.getTotalPrice()+(Rt.getTotalPrice()*18/100)*2));
                 break;
                 
 			case 6:
@@ -97,7 +101,7 @@ public class FoodOrderingSystem {
 
             case 8:
                 System.out.println("Exiting...");
-                sc.close();
+
                 return;
 
             default:
