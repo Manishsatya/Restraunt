@@ -77,7 +77,9 @@ public class FoodOrderingSystem {
 			case 4:
 				System.out.println("Cart:");
 				Rt.displayCart();
-				System.out.println("Total Price: " + Rt.getTotalPrice());
+				System.out.println("Price : "+ Rt.getPrice());
+				System.out.println("Quantity : "+ Rt.getQuantity());
+				System.out.println("Total Price: "+ Rt.getTotalPrice());
 				break;
 
 			case 5:

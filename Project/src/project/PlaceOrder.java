@@ -63,15 +63,35 @@ public class PlaceOrder {
 	 
 	 public double getTotalPrice() {
 	        double total = 0;
+	        
 	        for (Food food : Ord) {
 	            total += food.getPrice();
 	        }
 	        return total;
 	    }
+	 
+	 public double getPrice() {
+		 double price =0;
+		 for (Food food : Ord) {
+			  price = food.getPrice()/food.getQuantity();
+		 }
+		 return price;
+	 }
+	 
+	 public int getQuantity() {
+		 int quantity = 0;
+		 for (Food food : Ord) {
+			  quantity = food.getQuantity();
+		 }
+		 return quantity;
+		 
+	 }
+	 
+
 
 	    public void displayCart() {
 	        for (Food food : Ord) {
-	            System.out.println(food);
+	            System.out.println("Item:"+food.getFoodName());
 	        }
 	    }
 	 
