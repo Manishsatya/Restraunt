@@ -35,7 +35,9 @@ public class Restraunt {
     }
 	@Override
 	public String toString() {
-		return "Restraunt [Restraunt-Id=" + rid + ", Restraunt Name=" + name + ", Type=" + type + "]";
+		return "Restaurant-Id: " + rid + "\n" +
+	           "Restaurant Name: " + name + "\n" +
+	           "Type: " + type;
 	}
 	
 	
